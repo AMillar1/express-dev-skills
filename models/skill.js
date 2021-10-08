@@ -11,6 +11,11 @@ module.exports = {
     getOne, 
 } //define the exports from this module 
 
-function getAll () {
+function getAll() {
     return skills; 
 } //create a function for returning the entire array skills
+
+function getOne (id) {
+    id = parseInt(id);
+    return skills.find(skill => skill.id === id);
+}

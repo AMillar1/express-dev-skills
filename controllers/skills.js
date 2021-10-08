@@ -4,7 +4,7 @@ const Skill = require('../models/skill') //why is it capitalized?
 
 module.exports = {
     index, 
-    //show
+    show
 }; //this is CREATING (like init) the things that can be pulled from the require above. 
 
 function index(req, res) {
@@ -13,3 +13,7 @@ function index(req, res) {
     res.render('skills/index', { skills }) //this is the response to the client 
 }
 
+function show(req, res) {
+    const skill = Skill.getOne(req.params.id);
+    res.render('skills/show', { todo });
+}
