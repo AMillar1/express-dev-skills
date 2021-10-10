@@ -4,7 +4,11 @@ const Skill = require('../models/skill') //why is it capitalized?
 
 module.exports = {
     index, 
-    show
+    show,
+    add: addSkill,
+    create,
+    delete: deleteSkill,
+
 }; //this is CREATING (like init) the things that can be pulled from the require above. 
 
 function index(req, res) {
@@ -15,5 +19,20 @@ function index(req, res) {
 
 function show(req, res) {
     const skill = Skill.getOne(req.params.id);
-    res.render('skills/show', { todo });
+    res.render('skills/show', { skill });
+}
+
+function addSkill(req, res) {
+    res.render('skills/add');
+}
+
+function create(req, res) {
+    console.log(req.body);
+    Skill.create(req.body);
+    res.redirect('/skills');
+}
+
+function deleteSkill(req, res) {
+    Skill.deleteOne(req.params.simplyanythingwewant);
+    res.redirect('/skills');
 }
